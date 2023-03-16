@@ -71,7 +71,7 @@ endtry
 " digits
 syn match cssValueInteger contained "[-+]\=\d\+" contains=cssUnitDecorators
 syn match cssValueNumber contained "[-+]\=\d\+\(\.\d*\)\=" contains=cssUnitDecorators
-syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|fr\|vw\|vh\|vmin\|vmax\|ch\)\>" contains=cssUnitDecorators
+syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=\(mm\|cm\|in\|pt\|pc\|em\|ex\|px\|rem\|dpi\|dppx\|dpcm\|fr\|vw\|vh\|vb\|vi\|vmin\|vmax\|ch\)\>" contains=cssUnitDecorators
 syn match cssValueLength contained "[-+]\=\d\+\(\.\d*\)\=%" contains=cssUnitDecorators
 syn match cssValueAngle contained "[-+]\=\d\+\(\.\d*\)\=\(deg\|grad\|rad\)\>" contains=cssUnitDecorators
 syn match cssValueTime contained "+\=\d\+\(\.\d*\)\=\(ms\|s\)\>" contains=cssUnitDecorators
@@ -174,8 +174,9 @@ syn match cssBackgroundAttr contained "\<repeat\(-[xy]\)\=\>"
 " background-size attributes
 syn keyword cssBackgroundAttr contained cover contain
 
-syn match cssBorderProp contained "\<border\(-\(top\|right\|bottom\|left\)\)\=\(-\(width\|color\|style\)\)\=\>"
+syn match cssBorderProp contained "\<border\(-\(top\|right\|bottom\|left\|block\|block-start\|block-end\|inline\|inline-start\|inline-end\)\)\=\(-\(width\|color\|style\)\)\=\>"
 syn match cssBorderProp contained "\<border\(-\(top\|bottom\)-\(left\|right\)\)\=-radius\>"
+syn match cssBorderProp contained "\<border\(-\(start\|end\)-\(start\|end\)\)\=-radius\>"
 syn match cssBorderProp contained "\<border-image\(-\(outset\|repeat\|slice\|source\|width\)\)\=\>"
 syn match cssBorderProp contained "\<box-decoration-break\>"
 syn match cssBorderProp contained "\<box-shadow\>"
@@ -193,8 +194,8 @@ syn keyword cssBorderAttr contained thin thick medium
 syn keyword cssBorderAttr contained clone slice
 "------------------------------------------------
 
-syn match cssBoxProp contained "\<padding\(-\(top\|right\|bottom\|left\)\)\=\>"
-syn match cssBoxProp contained "\<margin\(-\(top\|right\|bottom\|left\)\)\=\>"
+syn match cssBoxProp contained "\<padding\(-\(top\|right\|bottom\|left\|block\|block-start\|block-end\|inline\|inline-start\|inline-end\)\)\=\>"
+syn match cssBoxProp contained "\<margin\(-\(top\|right\|bottom\|left\|block\|block-start\|block-end\|inline\|inline-start\|inline-end\)\)\=\>"
 syn match cssBoxProp contained "\<overflow\(-\(x\|y\|style\)\)\=\>"
 syn match cssBoxProp contained "\<rotation\(-point\)\=\>"
 syn keyword cssBoxAttr contained visible hidden scroll auto
@@ -208,9 +209,11 @@ syn match cssColorProp contained "\<color-profile\>"
 syn match cssColorProp contained "\<rendering-intent\>"
 
 
-syn match cssDimensionProp contained "\<\(min\|max\)-\(width\|height\)\>"
+syn match cssDimensionProp contained "\<\(min\|max\)-\(width\|height\|block-size\|inline-size\)\>"
 syn keyword cssDimensionProp contained height
 syn keyword cssDimensionProp contained width
+syn keyword cssDimensionProp contained block-size
+syn keyword cssDimensionProp contained inline-size
 
 " CSS Flexible Box Layout Module Level 1
 " http://www.w3.org/TR/css3-flexbox/
@@ -464,7 +467,7 @@ syn match cssPseudoClassId contained  "\<selection\>"
 syn match cssPseudoClassId contained  "\<\(input-\)\=placeholder\>"
 
 " Misc highlight groups
-syntax match cssUnitDecorators /\(#\|-\|+\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|ch\|rem\|vh\|vw\|vmin\|vmax\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\|deg\|grad\|rad\)/ contained
+syntax match cssUnitDecorators /\(#\|-\|+\|%\|mm\|cm\|in\|pt\|pc\|em\|ex\|px\|ch\|rem\|vh\|vw\|vb\|vi\|vmin\|vmax\|dpi\|dppx\|dpcm\|Hz\|kHz\|s\|ms\|deg\|grad\|rad\)/ contained
 syntax match cssNoise contained /\(:\|;\|\/\)/
 
 " Comment
